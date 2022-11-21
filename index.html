@@ -10,26 +10,19 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     let counter = 0;
-    function countUp() {
-      counter = counter + 1;
 
-      //counter 값은 증가하지만, 재렌더링을 해주지않기 때문에
-      // 웹페이지에서는 최초로 렌더링된 counter =0 에서 변경되지 않았던 것
-      render();
-    }
-
-    //UI를 렌더링 해주는 함수
-    function render() {
-      ReactDOM.render(<Container />, root);
-    }
-    function Container() {
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
       return (
         <div>
           <h3>Total clicks : {counter}</h3>
-          <button onClick={countUp}>Click me</button>
+          <button onClick={onClick}>Click me</button>
         </div>
       );
     }
-    render(); //렌더링
+    ReactDOM.render(<App />, root);
   </script>
 </html>
