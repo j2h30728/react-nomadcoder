@@ -8,22 +8,32 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
+    function Btn({ text, onClick }) {
+      console.log(text, "was rendered");
+      return (
+        <button
+          onClick={onClick}
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}>
+          {text}
+        </button>
+      );
+    }
 
     function App() {
-      function Btn({text, big}) {
-        return <button style ={{
-          backgroundColor :"tomato",
-          color:"white",
-          padding:"10px 20px",
-          border:0,
-          borderRadius:10,
-          fontSize : big ? 30 :10,
-        }}>{text}</button>
-      }
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => {
+        setValue("Revaer Changes");
+      };
       return (
         <div>
-          <Btn text="Save Changes" big={true}/>
-          <Btn text="Confirm" big={false}/>
+          <Btn text={value} onClick={changeValue} />
+          <Btn text="Continue" />
         </div>
       );
     }
