@@ -7,9 +7,10 @@
   <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
-    function Btn({ text, onClick }) {
-      console.log(text, "was rendered");
+    function Btn({ text, onClick, fontSize = 5 }) {
+      // fontSize = 5 을 줌을로써 할당하지않은 props 일경우, 5를 할당해줌
       return (
         <button
           onClick={onClick}
@@ -19,12 +20,18 @@
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
+            fontSize,
           }}>
           {text}
         </button>
       );
     }
     const MemorizedBtn = React.memo(Btn);
+
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired, //text porps는 문자열로 들어가야함. 해당 props는 필수 props임
+      fontSize: PropTypes.number, // fontSzie props는 숫자로 들어가야함. 해당 props는 추가하지않아도됨
+    };
     function App() {
       const [value, setValue] = React.useState("Save Changes");
       const changeValue = () => {
@@ -32,7 +39,7 @@
       };
       return (
         <div>
-          <MemorizedBtn text={value} onClick={changeValue} />
+          <MemorizedBtn text={value} onClick={changeValue} fontSize={30} />
           <MemorizedBtn text="Continue" />
         </div>
       );
