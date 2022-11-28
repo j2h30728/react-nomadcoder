@@ -1,5 +1,23 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path="/" element={<Home />} />
+      <Route path="/movie" element={<Detail />} />
+    </Route>
+  )
+);
+
 function App() {
-  return null;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
