@@ -1,23 +1,19 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  createRoutesFromElements,
-  Route,
-} from "react-router-dom";
-import Home from "./routes/Home";
-import Detail from "./routes/Detail";
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route>
-      <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
-      <Route path="/movie/:id" element={<Detail />} />
-    </Route>
-  )
-);
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './routes/Home';
+import Detail from './routes/Detail';
+import Nav from './components/Nav';
+import './App.css';
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+        <Route path="/movie/:id" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

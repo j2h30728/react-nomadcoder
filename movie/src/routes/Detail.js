@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import styles from './Detail.module.css';
 
 function Detail() {
   const { id } = useParams();
@@ -17,16 +18,23 @@ function Detail() {
   useEffect(() => {
     getMovie();
   }, []);
-  console.log(movie.title);
   return (
     <div>
       {loading ? (
-        <h1>Loading</h1>
+        <span className={styles.loader}>Loading...⏳</span>
       ) : (
-        <div>
-          <h1>{movie.title_long}</h1>
-          <img src={movie.large_cover_image} />
-          <div>{movie.description_intro}</div>
+        <div className={styles.container}>
+          <img src={movie.medium_cover_image} />
+          <div className={styles.textbox}>
+            <a href={movie.url} target="_blank">
+              {movie.title_long}
+            </a>
+            <div className={styles.rating}>
+              {`⭐ ${movie.rating}`}
+              {movie.runtime != 0 ? ` | ${movie.runtime}min` : ''}
+            </div>
+            <div>{movie.description_intro}</div>
+          </div>
         </div>
       )}
     </div>
