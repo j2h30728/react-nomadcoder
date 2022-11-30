@@ -6,20 +6,22 @@ function Movie({ id, coverImg, year, title, summary, genres }) {
   return (
     <Link to={`/movie/${id}`} className={styles.movie}>
       <img src={coverImg} alt={title}></img>
-      <h3 className={styles.title}>
-        <a>{title}</a>
-      </h3>
-      <h5 className={styles.year}>{year}</h5>
-      <ul className={styles.genres}>
-        {genres.map((g) => (
-          <li className={styles.genres} key={g}>
-            {g}
-          </li>
-        ))}
-      </ul>
-      <p className={styles.summary}>
-        {summary.length > 236 ? `${summary.slice(0, 235)}...` : summary}
-      </p>
+      <div>
+        <h3 className={styles.title}>
+          <a>{title}</a>
+        </h3>
+        <h5 className={styles.year}>{year}</h5>
+        <ul className={styles.genres}>
+          {genres.map((g) => (
+            <li className={styles.genre} key={g}>
+              {g}
+            </li>
+          ))}
+        </ul>
+        <p className={styles.summary}>
+          {summary.length > 236 ? `${summary.slice(0, 235)}...` : summary}
+        </p>
+      </div>
     </Link>
   );
 }

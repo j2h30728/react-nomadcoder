@@ -9,6 +9,8 @@
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   transition: all 0.4s ease;
+
+  display: flex;
 }
 .movie:hover {
   transform: translateY(-10px);
@@ -18,7 +20,7 @@
 .movie img {
   position: relative;
   top: -50px;
-  max-width: 150px;
+  max-width: 200px;
   width: 100%;
   margin-right: 30px;
   box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
@@ -41,6 +43,19 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  margin: 5px 10px 0 0;
+  /* margin: 5px 10px 0 0; */
   font-size: 14px;
+}
+.genre {
+  background-color: #d7d2cc;
+  color: #304352;
+  padding: 4px;
+  margin-right: 10px;
+  border-radius: 15px;
+  font-size: 13px;
+}
+@media screen and (max-width: 1400px) {
+  .movie {
+    display: block;
+  }
 }

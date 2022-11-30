@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from './Detail.module.css';
 
@@ -30,11 +30,14 @@ function Detail() {
               {movie.title_long}
             </a>
             <div className={styles.rating}>
-              {`⭐ ${movie.rating}`}
+              {`⭐ ${movie.rating} `}
               {movie.runtime != 0 ? ` | ${movie.runtime}min` : ''}
             </div>
             <div>{movie.description_intro}</div>
           </div>
+          <Link to={`${process.env.PUBLIC_URL}/`} className={styles.home}>
+            Home
+          </Link>
         </div>
       )}
     </div>
