@@ -12,13 +12,13 @@
     function MinutesToHours() {
       const [amount, setAmount] = React.useState("");
       const [inverted, setInverted] = React.useState(false);
-      const onChange = (e) => {
+      const onChange = e => {
         setAmount(e.target.value);
       };
       const reset = () => setAmount(0);
       const onInvert = () => {
         reset();
-        setInverted((current) => !current);
+        setInverted(current => !current);
       };
       return (
         <div>
@@ -46,7 +46,7 @@
           </div>
           <button onClick={reset}>Reset</button>
           <button onClick={onInvert}>
-            {inverted ? "Turn back" : "Invert"}{" "}
+            {inverted ? "Turn back" : "Invert"}
           </button>
         </div>
       );
@@ -54,13 +54,13 @@
     function KmToMiles() {
       const [amount, setAmount] = React.useState("");
       const [inverted, setInverted] = React.useState(false);
-      const onChange = (e) => {
+      const onChange = e => {
         setAmount(e.target.value);
       };
       const reset = () => setAmount(0);
       const onInvert = () => {
         reset();
-        setInverted((current) => !current);
+        setInverted(current => !current);
       };
       return (
         <div>
@@ -88,14 +88,14 @@
           </div>
           <button onClick={reset}>Reset</button>
           <button onClick={onInvert}>
-            {inverted ? "Turn back" : "Invert"}{" "}
+            {inverted ? "Turn back" : "Invert"}
           </button>
         </div>
       );
     }
     function App() {
       const [index, setIndex] = React.useState("xx");
-      const onSelect = (event) => {
+      const onSelect = event => {
         setIndex(event.target.value);
       };
       console.log("render w/", index);

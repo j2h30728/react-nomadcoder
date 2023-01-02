@@ -9,17 +9,10 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
 
     function App() {
       const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        //setCounter(counter+1);
-        //현재 sate를 바탕으로 다음 state를 계산해내고 싶다면, 아래 함수 사용 (안정성 높음)
-        setCounter((current) => current + 1);
-      };
-      console.log("rendered");
-      console.log(counter);
+      const onClick = () => setCounter(counter + 1);
       return (
         <div>
           <h3>Total clicks : {counter}</h3>
