@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      const [amount, setAmout] = React.useState();
+      const [invert, setInvert] = React.useState(false);
+      const handleAmount = event => {
+        setAmout(event.target.value);
+      };
+      const handleReset = () => {
+        setAmout();
+      };
+      const handleinvert = () => {
+        handleReset();
+        setInvert(!invert);
+      };
+      return (
+        <div>
+          <div>
+            <h1>Super Converter</h1>
+            <label htmlFor="minutes">minutes</label>
+            <input
+              value={invert ? amount * 60 : amount}
+              id="minutes"
+              type="number"
+              placeholder="Munutes"
+              onChange={handleAmount}
+              disabled={invert}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value={invert ? amount : Math.round(amount / 60)}
+              id="hours"
+              type="number"
+              placeholder="Hours"
+              onChange={handleAmount}
+              disabled={!invert}
+            />
+          </div>
+          <button onClick={handleReset}>reset</button>
+          <button onClick={handleinvert}>Invert</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
