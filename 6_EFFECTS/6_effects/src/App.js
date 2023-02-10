@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
 
-function App() {
+export default function App() {
+  function Hello() {
+    useEffect(() => {
+      console.log("Hello 컴포넌트가 mounted");
+      return () => console.log("Hello 컴포넌트가 unmounted");
+    }, []);
+    return <h3>Hello</h3>;
+  }
+  const [showing, setShowing] = useState(false);
+  const handleShowing = () => setShowing(!showing);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {showing && <Hello />}
+      <button onClick={handleShowing}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
-
-export default App;
